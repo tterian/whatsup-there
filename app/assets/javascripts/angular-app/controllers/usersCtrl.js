@@ -53,7 +53,6 @@ function UsersController($scope, $mdDialog, Toast, User) {
   };
 
   $scope.register = function(user) {
-    console.log(user);
     User.register(user)
       .then(function() {
         User.signIn(user);
