@@ -13,8 +13,6 @@ gem 'pg'
 gem 'public_activity'
 gem 'bower-rails'
 
-gem 'spring', :group => :development
-
 group :development, :test do
 	gem 'spring'
 end
