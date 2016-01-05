@@ -1,0 +1,19 @@
+/* -------------------------------- 
+Toasts
+-------------------------------- */
+
+$orange 	: #FF5252;
+$green 		: #4CAF50;
+
+.md-toast-error {
+	background-color: $orange;
+}
+
+.md-toast-info {
+	background-color: $green;
+}
+
+.md-toast-close {
+	position: absolute !important;
+	right: 0;
+}

@@ -1,0 +1,55 @@
+<md-dialog aria-label="add Marker" class="md-dialog-marker">
+  <h3>Add Marker</h3>
+  <md-divider></md-divider>
+
+  <md-content layout-padding class="sticky-container">
+    <div class="dialog-content">
+
+      <div class="ng-isolate-scope md-default-theme md-searchbox" aria-disabled="false">
+        <div layout="row" role="listbox" class="md-whiteframe-z1 md-searchbox-wrap">
+          <div id="searchBoxParent">
+          </div>
+        </div>
+      </div>
+      <div class="md-searchbox ">
+        <div layout="row" role="listbox" class="md-whiteframe-z1 md-searchbox-wrap">
+          <input type="text" placeholder="Enter a description..." ng-model="markerDescription">
+        </div>
+      </div>
+      <br/>
+
+      <ui-gmap-google-map center='smallMap.center' zoom='smallMap.zoom' options='smallMap.options' draggable='true'>
+
+        <ui-gmap-search-box
+          template="searchbox.template"
+          events="searchbox.events"
+          parentdiv="searchbox.parentdiv">
+        </ui-gmap-search-box>
+
+      </ui-gmap-google-map>
+
+      <h3 class="md-subhead">Select a tag</h3>
+      <md-grid-list
+          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3" md-row-height="60px"
+          md-gutter="4px">
+            <md-grid-tile ng-repeat="tag in tags" ng-init="tag.selected = false">
+              <md-button md-no-ink class="md-raised" ng-class="{true: 'md-selected', false: ''}[tag.selected]" ng-click="setMarkerTags(tag)">
+                {{tag.name}}
+              </md-button>  
+            </md-grid-tile>
+      </md-grid-list>
+    
+    </div>
+  </md-content>
+
+
+  <div class="md-actions" layout="row">
+    <md-button class="md-primary md-dialog-action-buttons" ng-click="closeDialog()">
+      Cancel
+    </md-button>
+    <md-button class="md-primary md-dialog-action-buttons" ng-click="addMarker(marker)">
+      Ok
+    </md-button>
+  </div>
+
+</md-dialog>

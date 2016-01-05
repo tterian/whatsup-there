@@ -1,0 +1,93 @@
+/* -------------------------------- 
+Content
+-------------------------------- */
+
+$orange			: #FF5252;
+$grey-light		: #FAFAFA;
+$green			: #4CAF50;
+
+.md-legend {
+	position: absolute;
+	max-height: 70% !important;
+	height: 100% !important;
+	width: 500px;
+	top: 90px;
+	right: 20px;
+	background-color: white;
+	overflow: auto;
+}
+
+/*hacked md-ripple-container, should find a better way to disable it*/
+.md-legend .md-ripple-container {
+	display: none !important;
+}
+
+.md-legend-search {
+	position: fixed !important;
+	z-index: 999 !important;
+	background-color: white !important;
+	width: 25% !important;
+}
+
+.md-icon-button-cust {
+	margin-left: 16px;
+	outline: none;
+}
+
+.md-fab {
+	background: $orange !important;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+	.md-legend {
+		width: 90%;
+		top: 160px;
+	}
+}
+
+
+.md-faved path {
+	fill: $orange !important;
+}
+
+.md-send-comment {
+	cursor: pointer;
+	outline: none;
+}
+
+.md-comment-pass path {
+	fill: $green !important;
+}
+
+.md-comment-fail path {
+	fill: $orange !important;
+}
+
+.md-comments-avatar {
+	margin-top: 10px !important;
+}
+
+.md-comments {
+	margin-top: -20px !important;
+}
+
+.md-comments-hr {
+	border: 1px solid red;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.md-comment-item {
+	height: 60px;
+	top: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.md-comment-item-text h3, p {
+	text-align: left !important;
+	line-height: 1em !important;
+	margin: 0 !important;
+	top: 0 !important;
+}

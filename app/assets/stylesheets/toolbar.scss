@@ -1,0 +1,24 @@
+/* -------------------------------- 
+Toolbar
+-------------------------------- */
+
+$grey: #607D8B;
+
+
+md-toolbar {
+	position: absolute !important;
+	background-color: $grey;
+	color: white;
+}
+
+.md-toolbar-username {
+	font-weight: 300;
+	font-size: 18px;
+	margin-left: 30px;
+}
+
+.md-avatar {
+	width: 52px;
+	height: 52px;
+	margin-left: 12px;
+}

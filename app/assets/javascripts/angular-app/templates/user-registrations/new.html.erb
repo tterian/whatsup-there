@@ -1,0 +1,52 @@
+<md-dialog aria-label="register User" class="md-dialog-user">
+  <h3>Register</h3>
+  <md-divider></md-divider>
+
+  <md-content layout-padding class="sticky-container">
+    <div class="dialog-content">
+
+      <form name="userForm">
+        <md-input-container class="md-icon-float">
+          <label>Name</label>
+          <md-icon md-svg-icon="assets/svg/md-account.svg" class="name"></md-icon>
+          <input type="name" aria-label="name" ng-model="user.name" required>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float">
+          <label>Email</label>
+          <md-icon md-svg-icon="assets/svg/md-email.svg" class="name"></md-icon>
+          <input type="email" aria-label="email" ng-model="user.email" required>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float">
+          <label>Password</label>
+          <md-icon md-svg-icon="assets/svg/md-lock.svg" class="name"></md-icon>
+          <input type="password" aria-label="password" ng-model="user.password" required>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float">
+          <label>Password Confirmation</label>
+          <md-icon md-svg-icon="assets/svg/md-lock.svg" class="name"></md-icon>
+          <input type="password" aria-label="password" ng-model="user.password_confirmation" required>
+        </md-input-container>
+      </form>
+      
+      <h3 class="md-subhead">Select an avatar</h3>
+      <div ng-repeat="avatar in avatars" class="md-avatar-container" ng-init="avatars[0].selected = true">
+          <md-icon md-svg-icon="assets/svg/md-bubble.svg" ng-show="avatar.selected" class="md-avatar-bubble"></md-icon>
+          <img ng-src="assets/avatar/{{avatar.name}}.png" class="md-avatar" ng-click="selectAvatar(avatar, avatars)" />
+      </div>
+
+    </div>
+  </md-content>
+
+  
+  <div class="md-actions" layout="row">
+    <md-button class="md-primary md-dialog-action-buttons" ng-click="closeDialog()">
+      Cancel
+    </md-button>
+    <md-button class="md-primary md-dialog-action-buttons" ng-click="register(user)">
+      Ok
+    </md-button>
+  </div>
+</md-dialog>
