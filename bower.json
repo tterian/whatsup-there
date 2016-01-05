@@ -6,12 +6,12 @@
       "angular-route": "latest",
       "angular-animate": "latest",
       "angular-resource": "latest",
-      "angular-material": "latest",
+      "angular-material": "0.10.0",
       "angular-material-icons": "latest",
       "angular-moment": "latest",
       "ng-token-auth": "latest",
       "angular-cookie": "latest",
-      "angular-google-maps": "latest"
+      "angular-google-maps": "2.1.5"
     }
   },
   "vendor": {

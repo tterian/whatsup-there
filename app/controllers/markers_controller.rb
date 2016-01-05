@@ -18,7 +18,7 @@ class MarkersController < ApplicationController
   # POST /api/markers
   # Add a new marker
   def create
-    marker = Marker.new(marker_params)
+    marker = Marker.new(name: params[:name], latitude: params[:latitude], longitude: params[:longitude], description: params[:description], user_id: current_user.id)
 
     if marker.save
       render json: marker
@@ -26,12 +26,6 @@ class MarkersController < ApplicationController
     else
       render json: { error: "Marker creating error" }, status: :unprocessable_entity
     end
-  end
-  
-  private
-
-  def marker_params
-    params.require(:marker).permit(:name, :latitude, :longitude, :description, :tags, :user_id)
   end
 
 end

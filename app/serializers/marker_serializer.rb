@@ -6,7 +6,7 @@ class MarkerSerializer < ActiveModel::Serializer
   has_many :tags
 
   def poster
-    return object.user.avatar
+    return object.user.image
   end
 
 end

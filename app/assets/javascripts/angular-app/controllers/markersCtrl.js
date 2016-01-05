@@ -80,7 +80,7 @@ function MarkersController($scope, $mdDialog, User, Toast, Marker, Tag) {
       longitude:    $scope.markerLng,
       description:  $scope.markerDescription,
       tags:         $scope.markerTags.join(),
-      poster:       $scope.currentUser.avatar,
+      poster:       $scope.currentUser.image,
       user_id:      $scope.currentUser.id
     };
 

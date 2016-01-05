@@ -7,7 +7,7 @@ function CommentsController($scope, $mdDialog, Toast, Comment) {
       var extendedComment = {
         user_id:    $scope.currentUser.id,
         marker_id:  $scope.currentMarker.id,
-        poster:     $scope.currentUser.avatar,
+        poster:     $scope.currentUser.image,
         text:       comment.text,
         created_at: new Date()
       }; 
