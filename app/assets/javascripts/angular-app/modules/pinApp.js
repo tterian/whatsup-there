@@ -17,16 +17,18 @@ angular
   .config(routeProvider)
   .config(gmapProvider)
   .factory('User', User)
-  .factory('Tag', Tag)
-  .factory('Marker', Marker)
-  .factory('Fav', Fav)
-  .factory('Comment', Comment)
+  .factory('Event', Event)
   .factory('Toast', Toast)
+  .controller('ToolbarController', ToolbarController)
+  .controller('SidenavController', SidenavController)
   .controller('MainController', MainController)
   .controller('UsersController', UsersController)
   .controller('MarkersController', MarkersController) 
   .controller('CommentsController', CommentsController)
-  .controller('ToastsController', ToastsController);
+  .controller('ToastsController', ToastsController)
+  .directive('toolbar', toolbar)
+  .directive('markerBox', markerBox)
+  .directive('sidenav', sidenav);
 
 //Config routes
 function routeProvider($routeProvider, $locationProvider) {

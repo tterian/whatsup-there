@@ -12,6 +12,7 @@ gem 'devise_token_auth'
 gem 'pg'
 gem 'public_activity'
 gem 'bower-rails'
+gem 'httparty'
 
 group :development, :test do
 	gem 'spring'

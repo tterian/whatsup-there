@@ -1,8 +1,30 @@
-function MainController($scope, $mdSidenav, $mdDialog, User, Marker, Fav, Tag, Toast) {
+function MainController($scope, $mdSidenav, $mdDialog, uiGmapGoogleMapApi, uiGmapIsReady, User, Event) {
 
-  $scope.tags = Tag.all;
-  $scope.markers = Marker.all;
-  $scope.favs = Fav.all;
+  $scope.markers = [];
+  var geocoder = new google.maps.Geocoder();
+
+  Event.all.$promise
+    .then(function(response) {
+      $scope.events = response.events
+
+      for ( var i = 0; i < $scope.events.event.length; i++ ) {
+        address = $scope.events.event[i]["venue_address"]
+
+        if (address) {
+          $scope.markers.push({
+              id:          $scope.markers.length,
+              name:        $scope.events.event[i]["title"],
+              description: $scope.events.event[i]["description"],
+              latitude:    geocodeAddress(address, function(latLng) { return latLng.lat() }),
+              longitude:   geocodeAddress(address, function(latLng) { return latLng.lng() })
+            })
+        }
+      }
+      console.log($scope.markers)
+    })
+    .catch(function() {
+      console.log("Something went wrong!")
+    });
 
   $scope.currentUser = User.currentUser();
 
@@ -22,55 +44,9 @@ function MainController($scope, $mdSidenav, $mdDialog, User, Marker, Fav, Tag, T
       latitude: 40.180282,
       longitude:  44.516891
     },
-    zoom: 15
+    zoom: 13
   };
 
-  $scope.getMarker = function(marker) {
-    $scope.currentMarker = marker;
-   
-    $scope.map = {
-      center: {
-        latitude: marker.latitude,
-        longitude:  marker.longitude
-      },
-      options: {
-        animation: google.maps.Animation.BOUNCE
-      }
-    };
-  };
-
-
-  $scope.triggerFav = function(marker) {
-    var currentFav = marker.fav;
-
-    if (currentFav.faved) {
-
-      currentFav.faved = false;
-      Fav.update(currentFav).$promise
-        .then(function() {
-          Toast.removeFav();
-        });
-    } else {
-      currentFav.faved = true;
-
-      Fav.update(currentFav).$promise
-        .then(function() {
-          Toast.addFav();
-        });
-    }
-  };
-
-
-  $scope.showComment = function(ev) {
-    $mdDialog.show({
-      scope: $scope,
-      preserveScope: true,
-      escapeToClose: true,
-      controller: 'CommentsController',
-      templateUrl: 'assets/angular-app/templates/comment/new.html.erb',
-      targetEvent: ev
-    }); 
-  };
 
   $scope.showMarker = function(ev) {
     if($scope.user.signedIn) {
@@ -134,5 +110,18 @@ function MainController($scope, $mdSidenav, $mdDialog, User, Marker, Fav, Tag, T
   $scope.closeDialog = function() {
     $mdDialog.hide();
   }
+
+  // geocode the given address
+  var geocodeAddress = function(address, callback) {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              callback(results[0].geometry.location);
+          } else {
+              console.log("Geocode was not successful for the following reason: " + status);
+          }
+      });
+  };
+
 
 };

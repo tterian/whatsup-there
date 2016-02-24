@@ -1,0 +1,24 @@
+<md-toolbar class="md-toolbar md-whiteframe-z2">
+  <div class="md-toolbar-tools">
+    <md-button md-no-ink ng-click="toggleMenu()" class="md-icon-button" aria-label="Menu">
+      <md-icon md-svg-icon="assets/svg/md-menu.svg"></md-icon>
+    </md-button>
+    <span>What's up there?</span>
+
+    <span flex></span> 
+
+    <md-button ng-show="user.signedIn" class="md-icon-button" aria-label="My Markers">
+      <md-icon md-svg-icon="assets/svg/md-heart.svg"></md-icon>
+    </md-button>
+
+    <md-button ng-show="user.signedIn" class="md-icon-button" aria-label="Message">
+      <md-icon md-svg-icon="assets/svg/md-mail.svg"></md-icon>
+    </md-button>
+
+    <md-button ng-show="user.signedIn" class="md-icon-button" aria-label="Notifications">
+      <md-icon md-svg-icon="assets/svg/md-notif.svg"></md-icon>
+    </md-button>
+    <span class="md-toolbar-username">{{user.name}}</span>
+    <img ng-show="user.signedIn" ng-src="assets/avatar/{{user.image}}.png" class="md-avatar" alt="Avatar" />
+  </div>
+</md-toolbar>

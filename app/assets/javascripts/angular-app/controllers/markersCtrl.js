@@ -1,70 +1,10 @@
-function MarkersController($scope, $mdDialog, User, Toast, Marker, Tag) {
+function MarkersController($scope, $mdDialog, User, Toast) {
 
   $scope.currentUser = User.currentUser();
 
-  $scope.markerTags = [];
-  $scope.markerDescription = '';
-  //add a custom style for my map (Blue Essence)
-  var styleArray = [{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#e0efef"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"hue":"#1900ff"},{"color":"#c0e8e8"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":700}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#7dcdcd"}]}]
-
-  //add map with base parameters focused on Yerevan
-  $scope.smallMap = {
-    options: {
-      styles: styleArray,
-      panControl: false,
-      streetViewControl: false,
-      zoomControl: false,
-      mapTypeControl: false     
-    },
-    center: {
-      latitude: 40.180282,
-      longitude:  44.516891
-    },
-    zoom: 15
-  };
-
-  var events = {
-    places_changed: function (searchBox) {
-      var place = searchBox.getPlaces();
-
-        if (!place || place == 'undefined' || place.length == 0) {
-            console.log('no place data :(');
-          return;
-        }
-      $scope.markerName = place[0].name;
-      $scope.markerLat = place[0].geometry.location.lat();
-      $scope.markerLng = place[0].geometry.location.lng();
-
-      $scope.smallMap.center = {
-        "latitude": $scope.markerLat,
-        "longitude": $scope.markerLng
-      };
-    }
+  $scope.getMarker = function(marker) {
+    console.log(marker)
   }
-
-
-
-
-  $scope.searchbox = {
-    template: 'assets/angular-app/templates/searchbox/template.html.erb',
-    events: events,
-    parentdiv: 'searchBoxParent'
-  };
-
-
-  $scope.setMarkerTags = function(tag) {
-    var index = $scope.markerTags.indexOf(tag.name);
-
-    if(tag.selected) {
-      if (index > -1) {
-        $scope.markerTags.splice(index, 1);
-      }
-      tag.selected = !tag.selected;
-    } else {
-      $scope.markerTags.push(tag.name);
-      tag.selected = !tag.selected;
-    }
-  };
 
   $scope.addMarker = function(marker) {
     if ($scope.markers.length == 0) {
