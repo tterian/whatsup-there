@@ -2,14 +2,16 @@
   "lib": {
     "name": "bower-rails generated lib assets",
     "dependencies": {
-      "angular": "1.4.8",
-      "angular-route": "1.4.8",
-      "angular-resource": "1.4.8",
-      "angular-material": "0.10.0",
-      "angular-moment": "0.10.3",
-      "ng-token-auth": "0.0.28",
-      "angular-cookie": "4.0.9",
-      "angular-google-maps": "2.1.5"
+      "angular": "1.4.9",
+      "angular-route": "latest",
+      "angular-resource": "latest",
+      "angular-material": "1.0.5",
+      "angular-moment": "latest",
+      "ng-token-auth": "latest",
+      "angular-cookie": "latest",
+      "angular-google-maps": "latest",
+      "lodash": "latest",
+      "ngstorage": "latest"
     }
   },
   "vendor": {

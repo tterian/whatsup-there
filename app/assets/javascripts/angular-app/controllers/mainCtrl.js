@@ -1,30 +1,35 @@
-function MainController($scope, $mdSidenav, $mdDialog, uiGmapGoogleMapApi, uiGmapIsReady, User, Event) {
+function MainController($scope, $mdSidenav, $mdDialog, User, Event, Geocoder) {
 
   $scope.markers = [];
-  var geocoder = new google.maps.Geocoder();
 
   Event.all.$promise
-    .then(function(response) {
-      $scope.events = response.events
+  .then(function(response) {
+    $scope.events = response.events
 
-      for ( var i = 0; i < $scope.events.event.length; i++ ) {
-        address = $scope.events.event[i]["venue_address"]
+    angular.forEach($scope.events.event, function(value, key) {
 
-        if (address) {
-          $scope.markers.push({
-              id:          $scope.markers.length,
-              name:        $scope.events.event[i]["title"],
-              description: $scope.events.event[i]["description"],
-              latitude:    geocodeAddress(address, function(latLng) { return latLng.lat() }),
-              longitude:   geocodeAddress(address, function(latLng) { return latLng.lng() })
-            })
-        }
-      }
-      console.log($scope.markers)
-    })
-    .catch(function() {
-      console.log("Something went wrong!")
+      address = value["venue_address"]
+      title = value["title"]
+      description = value["description"]
+
+      Geocoder.geocodeAddress(address)
+      .then(function(latlng) {
+        console.log(latlng)
+        $scope.markers.push({
+          id:          $scope.markers.length,
+          name:        title,
+          description: description,
+          latitude:    latlng.lat,
+          longitude:   latlng.lng
+        })
+      })
+
     });
+
+  })
+  .catch(function() {
+    console.log("Something went wrong!")
+  });
 
   $scope.currentUser = User.currentUser();
 
@@ -111,17 +116,19 @@ function MainController($scope, $mdSidenav, $mdDialog, uiGmapGoogleMapApi, uiGma
     $mdDialog.hide();
   }
 
-  // geocode the given address
-  var geocodeAddress = function(address, callback) {
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-              callback(results[0].geometry.location);
-          } else {
-              console.log("Geocode was not successful for the following reason: " + status);
-          }
-      });
-  };
+//   // geocode the given address
+//   var geocodeAddress = function(address) {
+//       var geocoder = new google.maps.Geocoder();
+// //      console.log(address)
+//       geocoder.geocode( { 'address': address}, function(results, status) {
+//           if (status == google.maps.GeocoderStatus.OK) {
+//               console.log(results[0].geometry.location.lat())
+//               return results[0].geometry.location;
+//           } else {
+//               console.log("Geocode was not successful for the following reason: " + status);
+//           }
+//       });
+//   };
 
 
 };

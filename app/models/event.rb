@@ -4,7 +4,8 @@ class Event < ActiveRecord::Base
   def self.fetch
     query = { 
       app_key: Rails.application.secrets.eventful_api_key,
-      location: "Yerevan"
+      location: "Yerevan",
+      page_size: "50"
     }
 
     url = "http://api.eventful.com/json/events/search"
@@ -13,7 +14,6 @@ class Event < ActiveRecord::Base
     events = JSON.parse(response.body)
 
     return events
-
   end
 
 end

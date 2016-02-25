@@ -5,20 +5,21 @@ angular
     'ngRoute',
     /* Material framework */
     'ngMaterial',
-    'ngMdIcons',
     'ngAria',
     /* Authetication */
     'ng-token-auth',
     /* Time ago and more */
     'angularMoment',
     /* GMAP */
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'ngStorage'
     ])
   .config(routeProvider)
   .config(gmapProvider)
   .factory('User', User)
   .factory('Event', Event)
   .factory('Toast', Toast)
+  .factory('Geocoder', Geocoder)
   .controller('ToolbarController', ToolbarController)
   .controller('SidenavController', SidenavController)
   .controller('MainController', MainController)

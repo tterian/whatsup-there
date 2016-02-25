@@ -17,14 +17,15 @@
 //= require angular-resource
 //= require angular-animate
 //= require angular-material
-//= require angular-material-icons
 //= require angular-aria
 //= require moment
 //= require angular-moment
 //= require angular-cookie
 //= require ng-token-auth
-//= require lodash
+//= require lodash/lodash
+//= require angular-simple-logger
 //= require angular-google-maps
+//= require ngstorage
 
 //= require_tree ./angular-app/templates
 //= require_tree ./angular-app/controllers
