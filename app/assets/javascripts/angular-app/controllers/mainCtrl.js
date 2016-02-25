@@ -1,4 +1,4 @@
-function MainController($scope, $mdSidenav, $mdDialog, User, Event, Geocoder) {
+function MainController($scope, $mdSidenav, $mdDialog, User, Event, Venue, Geocoder) {
 
   $scope.markers = [];
 
@@ -6,21 +6,32 @@ function MainController($scope, $mdSidenav, $mdDialog, User, Event, Geocoder) {
   .then(function(response) {
     $scope.events = response.events
 
-    angular.forEach($scope.events.event, function(value, key) {
+    angular.forEach($scope.events, function(value, key) {
+      venueId = value["venue_id"]
 
-      address = value["venue_address"]
 
-      $scope.markers.push({
-        id:          $scope.markers.length,
-        name:        value["title"],
-        description: value["description"]
-      })
 
-      Geocoder.geocodeAddress(address)
-      .then(function(latlng) {
-        $scope.markers[key].latitude = latlng.lat;
-        $scope.markers[key].longitude = latlng.lng;
-      });
+      // Venue.get(venueId).$promise
+      // .then(function(response) {
+
+      //   $scope.markers.push({
+      //     id:          $scope.markers.length,
+      //     latitude:    response.latitude,
+      //     longitude:   response.longitude,
+      //     name:        value["name"]["text"],
+      //     description: value["description"]["text"]
+      //   })
+
+
+      // })
+
+
+
+      // Geocoder.geocodeAddress(address)
+      // .then(function(latlng) {
+      //   $scope.markers[key].latitude = latlng.lat;
+      //   $scope.markers[key].longitude = latlng.lng;
+      // });
 
     });
   })

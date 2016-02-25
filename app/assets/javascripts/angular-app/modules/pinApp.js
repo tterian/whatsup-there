@@ -18,6 +18,7 @@ angular
   .config(gmapProvider)
   .factory('User', User)
   .factory('Event', Event)
+  .factory('Venue', Venue)
   .factory('Toast', Toast)
   .factory('Geocoder', Geocoder)
   .controller('ToolbarController', ToolbarController)
@@ -28,6 +29,7 @@ angular
   .controller('CommentsController', CommentsController)
   .controller('ToastsController', ToastsController)
   .directive('toolbar', toolbar)
+  .directive('eventBox', eventBox)
   .directive('markerBox', markerBox)
   .directive('sidenav', sidenav);
 

@@ -1,12 +1,6 @@
-class MarkerSerializer < ActiveModel::Serializer
-  attributes :id, :name, :latitude, :longitude, :description, :user_id, :poster
+class EventSerializer < ActiveModel::Serializer
+  attributes :name, :description, :url, :start_date, :end_date, :capacity, :status
+  attributes :currency, :online_event, :venue, :category, :logo
 
-  has_many :comments
-  has_one  :fav
-  has_many :tags
-
-  def poster
-    return object.user.image
-  end
-
+  has_one  :venue
 end

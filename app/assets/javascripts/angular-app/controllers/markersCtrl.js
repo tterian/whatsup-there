@@ -1,4 +1,4 @@
-function MarkersController($scope, $mdDialog, User, Toast) {
+function MarkersController($scope, $mdDialog, $mdSidenav, User, Toast) {
 
   $scope.currentUser = User.currentUser();
 
@@ -9,6 +9,8 @@ function MarkersController($scope, $mdDialog, User, Toast) {
         longitude:  marker.longitude
       }
     };
+    $scope.currentMarker = marker;
+    $mdSidenav('event').toggle();
   }
 
   $scope.closeDialog = function() {

@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /api/events
   # Get all the events
   def index
-    @events = Event.fetch
+#    @events = Event.fetch
+	@events = Event.all
     render json: @events
   end
 

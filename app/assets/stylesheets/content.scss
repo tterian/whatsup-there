@@ -6,28 +6,7 @@ $orange			: #FF5252;
 $grey-light		: #FAFAFA;
 $green			: #4CAF50;
 
-.md-legend {
-	position: absolute;
-	max-height: 70% !important;
-	height: 100% !important;
-	width: 500px;
-	top: 90px;
-	right: 20px;
-	background-color: white;
-	overflow: auto;
-}
 
-/*hacked md-ripple-container, should find a better way to disable it*/
-.md-legend .md-ripple-container {
-	display: none !important;
-}
-
-.md-legend-search {
-	position: fixed !important;
-	z-index: 999 !important;
-	background-color: white !important;
-	width: 25% !important;
-}
 
 .md-icon-button-cust {
 	margin-left: 16px;
