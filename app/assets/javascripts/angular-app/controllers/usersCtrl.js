@@ -74,10 +74,9 @@ function UsersController($scope, $mdDialog, Toast, User) {
   };
 
   $scope.showRegister = function(ev) {
-    $mdDialog.hide();
     $mdDialog.show({
-      controller: 'UsersController',
-      templateUrl: 'assets/angular-app/templates/user-registrations/new.html.erb',
+      controller: 'MarkersController',
+      templateUrl: 'assets/angular-app/templates/marker/new.html.erb',
       targetEvent: ev,
     });
   };
