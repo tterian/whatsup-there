@@ -1,18 +1,8 @@
 <md-sidenav class="md-whiteframe-z2 md-event" md-component-id="event">
   <md-toolbar layout="row">
     <div ng-hide="user.signedIn" class="md-toolbar-tools">
-      <span>Pages</span>
+      <span>{{currentEvent.name}}</span>
       <span flex></span>
-
-      <md-button md-no-ink ng-click="closeMenu()" class="md-icon-button" aria-label="Close">
-        <md-icon md-svg-icon="assets/svg/md-chevron.svg"></md-icon>
-      </md-button>
-    </div>
-
-    <div ng-show="user.signedIn" class="md-toolbar-tools">
-      <span>{{user.name}}</span>
-      <span flex></span>
-
 
       <md-button md-no-ink ng-click="closeMenu()" class="md-icon-button" aria-label="Close">
         <md-icon md-svg-icon="assets/svg/md-chevron.svg"></md-icon>
@@ -21,53 +11,29 @@
   </md-toolbar>
 
   <md-content>
-    <div ng-hide="user.signedIn">
-      <md-menu-item>
-        <md-button ng-click="showSignIn($event)">
-          Login
-        </md-button>
-      </md-menu-item>
-
-      <md-menu-item>
-        <md-button ng-click="showRegister($event)">
-          Register
-        </md-button>
-      </md-menu-item>
-
-      <md-menu-item>
-        <md-button>
-          About Us
-        </md-button>
-      </md-menu-item>
+    <div>
+      <img ng-src="{{currentEvent.logo}}" class="md-event-image" alt="Event hero">
     </div>
 
-    <div ng-show="user.signedIn" class="md-profile-title">
-      <h1 class="md-title">Profile</h1>
-      <md-menu-item>
-        <md-button>
-          Settings
-        </md-button>
-      </md-menu-item>
-
-      <md-menu-item>
-        <md-button ng-click="signOut()">
-          Logout
-        </md-button>
-      </md-menu-item>
-
-      <md-menu-item>
-        <md-button>
-          About Us
-        </md-button>
-      </md-menu-item>
+    <div>
+      <p>{{currentEvent.description}}</p>
     </div>
-   </md-content>
-   <div class="sidenav-signature">
-    <p>
-      created with love and care
-    </p>
-    <p>
-      (c) Tigran Terian
-    </p>    
-   </div>
+
+    <div>
+      <h4>Disabled date-picker</h4>
+      <md-datepicker ng-model="currentEvent.start_date" md-placeholder="Enter date" disabled></md-datepicker>
+      <md-datepicker ng-model="currentEvent.end_date" md-placeholder="Enter date" disabled></md-datepicker>
+    </div>
+
+    <div>
+      <h4>Capacity: {{currentEvent.capacity}}</h4>
+      <h4>Status: {{currentEvent.status}}</h4>
+    </div>
+
+    <div>
+      <md-button ng-href="{{currentEvent.url}}" target="_blank">Get Tickets!</md-button>
+    </div>
+
+  </md-content>
+
 </md-sidenav>

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160105095235) do
     t.string   "address"
     t.integer  "longitude"
     t.integer  "latitude"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

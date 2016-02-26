@@ -6,7 +6,7 @@ function Event($resource) {
     });
 
   var Event = {
-    all: events.get(),
+    all: events.query(),
   };
 
   return Event;

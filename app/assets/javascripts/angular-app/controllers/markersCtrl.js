@@ -9,7 +9,7 @@ function MarkersController($scope, $mdDialog, $mdSidenav, User, Toast) {
         longitude:  marker.longitude
       }
     };
-    $scope.currentMarker = marker;
+    $scope.currentEvent = marker;
     $mdSidenav('event').toggle();
   }
 

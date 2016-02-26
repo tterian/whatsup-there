@@ -4,6 +4,7 @@ function MainController($scope, $mdSidenav, $mdDialog, User, Event, Venue, Geoco
 
   Event.all.$promise
   .then(function(response) {
+    $scope.markers = response
     $scope.events = response.events
 
     angular.forEach($scope.events, function(value, key) {
